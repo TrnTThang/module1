@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Form</title>
+    <style>
+        html {
+            font-family: "Times New Roman";
+        }
+        form{
+            background: bisque;
+            width: 500px;
+        }
+        .title{
+            color: deepskyblue;
+        }
+
+    </style>
+</head>
+<body>
+<form action="bt1_basic_form.html" method="post">
+    <table>
+        <tr>
+            <td colspan="2" class="title"><h1>ĐĂNG KÍ HỌC VIÊN</h1></td>
+        </tr>
+        <tr>
+            <td>Họ và tên </td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>Ngày sinh</td>
+            <td><input type="text"> </td>
+        </tr>
+        <tr>
+            <td>Giới tính</td>
+            <td>
+                <input type="radio" name="gender">Nam
+                <input type="radio" name="gender">Nữ
+            </td>
+        </tr>
+        <tr>
+            <td>Địa chỉ</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>Lớp</td>
+            <td>
+<!--            <label for="class">Chọn lớp</label>-->
+            <select name="class" id="class">
+                <option value=" disabled selected">— Chọn lớp —</option>
+                <option value="class1">lớp 10</option>
+                <option value="class2">lớp 11</option>
+                <option value="class3">lớp 12</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" ></td>
+
+        </tr>
+        <tr>
+            <td>Điện thọai</td>
+            <td><input type="text"> </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Đăng kí">
+                <input type="reset" value="nhập lại">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
