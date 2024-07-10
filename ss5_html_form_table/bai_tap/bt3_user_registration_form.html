@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
 </head>
 <body>
-$END$
+<style>
+    html{
+        font-family: "Times New Roman";
+    }
+</style>
+<form action="bt3_user_registration_form.html" method="post">
+  <table>
+      <tr>
+        <td> Họ và tên : </td>
+          <td> <input type="text" name="name"/> </td>
+      </tr>
+
+      <tr>
+          <td>Email: </td>
+    <td><input type="email" name="email"/></td>
+      </tr>
+
+      <tr>
+          <td>Số điện thoại: </td>
+    <td> <input type="tel" name="phone"/></td>
+      </tr>
+
+      <tr>
+          <td> Giới tính: </td>
+   <td> <input type="radio" name="gender" /> Nam
+        <input type="radio" name="gender"/> Nữ</td>
+      </tr>
+
+      <tr> <td><input type="submit" value="Đăng ký"> </td></tr>
+  </table>
+</form>
 </body>
 </html>
