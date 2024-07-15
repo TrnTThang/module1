@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Output</title>
+
+</head>
+<body>
+    Display a message using a function alert <Br>
+    <button type="button" onclick="ShowMessage();"> Click Here  </button>
+    <Br> Display a message using a function doccument.getElementById<Br>
+    <button type="button" onclick="ShowMessage1();"> Click Here</button>
+    <Br> Display a message using a function document.write()<Br>
+    <button type="button" onclick="ShowMessage2();"> Click Here</button>
+    <Br> Display a message using a function console.log()<Br>
+    <button type="button" onclick="ShowMessage3();"> Click Here</button>
+<script>
+    function ShowMessage() {
+        alert("Hello");
+
+    }
+    function ShowMessage1() {
+        document.getElementById("Hello").innerText= 'hello';
+
+    }
+    function ShowMessage2() {
+        document.write('Hello');
+
+    }
+    function ShowMessage3() {
+        console.log('Hello');
+
+    }
+</script>
+</body>
+</html>
