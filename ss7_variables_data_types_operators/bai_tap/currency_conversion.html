@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Conversion</title>
+</head>
+<body>
+
+<table style="align-content: center">
+<tr>
+    <td>Amount</td>
+    <td>From Currency</td>
+    <td>To Currency</td>
+</tr>
+    <tr>
+        <td><input type="number"  id="amount"></td>
+        <td><select   id="currency_1">
+            <option value="Vn">VND </option>
+            <option value="Us">USD </option> </select>
+        </td>
+        <td><select   id="currency_2">
+            <option value="Vn">VND </option>
+            <option value="Us">USD </option> </select>
+        </td>
+    </tr>
+</table>
+<button  onclick="transform()">Convert</button>
+<div id= "result"></div>
+
+<script>
+    function transform() {
+        let amount = parseFloat(document.getElementById("amount").value);
+        let currency_1 = document.getElementById("currency_1").value;
+        let currency_2 = document.getElementById("currency_2").value;
+        let kq;
+
+        if (currency_1 ==="Vn" && currency_2 ==="Us" ){
+           kq = (amount * 0.0000424267688296908).toFixed(2) + " USD";
+       }
+        else if (currency_1 === "Us" && currency_2 === "Vn" ){
+           kq = (amount / 0.0000424267688296908).toFixed(2) + " VND";
+       }
+       else  {
+           kq = "Need chose currency";
+       }
+        document.getElementById("result").innerText = kq ;
+    }
+
+
+
+</script>
+
+</body>
+</html>

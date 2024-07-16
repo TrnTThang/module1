@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>variable, data types and operators</title>
+</head>
+<body>
+<div>
+    <h3> Write a program to input student scores for the subject: Physics, Chemistry and Biology.Then display average score and total score</h3>
+    Physics: <input type="number"  id="physics"> <br>
+    Chemistry: <input type="number"  id="chemistry"><br>
+    Biology: <input type="number"  id="biology"><br>
+    <button onclick="average()">Display result</button><br>
+    <div id="result"></div>
+</div>
+
+<div>
+    <h3> Transform Celsius to Fahrenheit</h3>
+    Physics: <input type="number"  id="oC"> <br>
+    <button onclick="transform()">Display result</button><br>
+    <div id="resultF"></div>
+</div>
+
+<div>
+    <h3> Calculate the circumference and area of a circle</h3>
+    Radius: <input type="number"  id="radius"> <br>
+    <button onclick="calculate()">Display result</button><br>
+    <div id="s_result"></div>
+    <div id="c_result"></div>
+</div>
+<script>
+    function average() {
+
+        let physics = parseFloat(document.getElementById("physics").value);
+        let chemistry = parseFloat(document.getElementById("chemistry").value);
+        let biology = parseFloat(document.getElementById("biology").value);
+
+        let total = physics + chemistry + biology;
+        let aver = total / 3;
+
+        document.getElementById("result").innerHTML = "Average: " + aver + " Total: " + total;
+    }
+    function transform() {
+        let Celsius = parseFloat(document.getElementById("oC").value);
+        let Fahrenheit = Celsius/5*9+32;
+        document.getElementById("resultF").innerHTML = Fahrenheit + "  oF";
+    }
+    function calculate() {
+        let r_circle = parseFloat(document.getElementById("radius").value);
+
+        let s_circle = r_circle* r_circle* 3.14;
+        let c_circle = 2*r_circle*3.14;
+
+        document.getElementById("s_result").innerHTML = "circumference is: " + s_circle;
+        document.getElementById("c_result").innerHTML = "area is: " + c_circle;
+    }
+</script>
+</body>
+</html>
