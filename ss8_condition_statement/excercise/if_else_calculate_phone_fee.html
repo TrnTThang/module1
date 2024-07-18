@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate the phone fee</title>
+</head>
+<body>
+<script>
+    let callTime = +prompt("Enter the number minutes you called");
+        let fee = 500;
+        if (callTime >= 50) {
+            fee = fee* 50 + fee*2*(callTime-50);
+        } else if (callTime >= 25) {
+            fee = fee* 25 + fee*1.5*(callTime-25);
+        } else {
+            fee = fee*callTime;
+        }
+          alert("Your fee is: "+ fee);
+</script>
+</body>
+</html>

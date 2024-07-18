@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maximum value</title>
+</head>
+<body>
+<script>
+    let number1 = parseInt(prompt("Enter number 1"));
+    let number2 = parseInt(prompt("Enter number 2"));
+    let number3 = parseInt(prompt("Enter number 3"));
+    let largest = FindMax(number1,number2,number3);
+    alert("The largest is :"+ largest)
+   function FindMax(a,b,c) {
+       let max;
+           if(a>=b && a>=c){
+               max=a;
+           } else if (b>=a && b>=c){
+               max=b;
+           } else max =c
+       return max;
+    }
+</script>
+</body>
+</html>

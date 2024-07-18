@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classify academic ability</title>
+</head>
+<body>
+<script>
+    let test = +prompt("Enter your score test");
+    let midExam = +prompt("Enter your score middle exam");
+    let finalExam = +prompt("Enter your score final exam");
+    let average = (test+midExam+finalExam)/3;
+    if (average >= 8) {
+        alert("Giỏi");
+    } else if (average >= 6.5) {
+        alert("Khá");
+    } else if (average >= 5) {
+        alert("Trung Bình");
+    } else {
+        alert("Yếu-Kém");
+    }
+</script>
+</body>
+</html>

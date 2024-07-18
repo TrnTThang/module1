@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare number</title>
+</head>
+<body>
+<script>
+    let number = +prompt("Enter a number is integer");
+    if(Number.isInteger(number)){
+        if (number > 0) {
+            alert("The number is bigger than 0");
+        } else if (number < 0) {
+            alert("The number is smaller than 0");
+        }
+    } else
+        alert("The number your entered isn't integer");
+
+</script>
+</body>
+</html>

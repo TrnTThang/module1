@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number of month</title>
+</head>
+<body>
+    <div>
+    <input type="number" id="EnterMonth" placeholder="Enter your month"/>
+    <button onClick="DisplayNumberDay()">Display number day of month </button>
+    </div>
+    <div id="result"> The number day you entered is : </div>
+    <script>
+    function DisplayNumberDay() {
+        let month = parseInt(document.getElementById("EnterMonth").value);
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                document.getElementById("result").innerText= "Month have 31 days"
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                document.getElementById("result").innerText = "Month have 30 days";
+                break;
+            case 2:
+                document.getElementById("result").innerText = "Month have 28 days";
+                break;
+        }
+    }
+
+</script>
+</body>
+</html>
