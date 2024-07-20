@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate Electricity</title>
+</head>
+<body>
+<script>
+    let kwh = parseFloat(prompt("Enter the electricity usage: "));
+    alert(calculateElectricity(kwh));
+
+    function calculateElectricity(kwh) {
+      if(isNaN(kwh) || kwh <0){
+          return "Invalid number";
+      }
+      let totalCost = 0;
+
+      const tierRate1 = 1.678;
+      const tierRate2 = 1.734;
+      const tierRate3 = 1.014;
+      const tierRate4 = 1.536;
+      const tierRate5 = 1.834;
+      const tierRate6 = 1.927;
+
+      if(kwh<=50){
+          totalCost = kwh * tierRate1;
+      } else if (kwh <= 100) {
+          totalCost = (50 * tierRate1) + ((kwh - 50) * tierRate2);
+      } else if (kwh <= 200) {
+          totalCost = (50 * tierRate1) + (50 * tierRate2) + ((kwh - 100) * tierRate3);
+      } else if (kwh <= 300) {
+          totalCost = (50 * tierRate1) + (50 * tierRate2) + (100 * tierRate3) + ((kwh - 200) * tierRate4);
+      } else if (kwh <= 400) {
+          totalCost = (50 * tierRate1) + (50 * tierRate2) + (100 * tierRate3) + (100 * tierRate4) + ((kwh - 300) * tierRate5);
+      } else {
+          totalCost = (50 * tierRate1) + (50 * tierRate2) + (100 * tierRate3) + (100 * tierRate4) + (100 * tierRate5) + ((kwh - 400) * tierRate6);
+      }
+        return `Total electric bill is : ${totalCost.toFixed(2)} VND`;
+    }
+</script>
+</body>
+</html>

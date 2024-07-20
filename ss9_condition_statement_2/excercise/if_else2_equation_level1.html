@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equation level 1</title>
+</head>
+<body>
+<script>
+    let a = parseFloat(prompt("Enter number a"));
+    let b= parseFloat(prompt("Enter number b"));
+    let x;
+    if(a===0){
+        if(b===0){
+            alert("Equation with infinite solution");
+        }  else{
+            alert("Equation with no solution");
+        }
+    }
+    else {
+            x = -b / a;
+            alert("Solution of equation is: " + x);
+        }
+
+</script>
+</body>
+</html>

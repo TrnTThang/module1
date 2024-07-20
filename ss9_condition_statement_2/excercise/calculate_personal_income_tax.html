@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate Personal Income Tax</title>
+</head>
+<body>
+<script>
+    let income = parseFloat(prompt("Enter your income (VND): "));
+    alert(calculateIncomeTax(income));
+
+    function calculateIncomeTax(income) {
+        if (isNaN(income) || income < 0) {
+            return "Invalid income amount.";
+        }
+
+        let tax = 0;
+        if (income <= 5000000) {
+            tax = 0;
+        } else if (income <= 10000000) {
+            tax = (income - 5000000) * 0.05;
+        } else if (income <= 18000000) {
+            tax = (10000000 - 5000000) * 0.05 + (income - 10000000) * 0.10;
+        } else if (income <= 32000000) {
+            tax = (10000000 - 5000000) * 0.05 + (18000000 - 10000000) * 0.10 + (income - 18000000) * 0.15;
+        } else if (income <= 52000000) {
+            tax = (10000000 - 5000000) * 0.05 + (18000000 - 10000000) * 0.10 + (32000000 - 18000000) * 0.15 + (income - 32000000) * 0.20;
+        } else if (income <= 80000000) {
+            tax = (10000000 - 5000000) * 0.05 + (18000000 - 10000000) * 0.10 + (32000000 - 18000000) * 0.15 + (52000000 - 32000000) * 0.20 + (income - 52000000) * 0.25;
+        } else {
+            tax = (10000000 - 5000000) * 0.05 + (18000000 - 10000000) * 0.10 + (32000000 - 18000000) * 0.15 + (52000000 - 32000000) * 0.20 + (80000000 - 52000000) * 0.25 + (income - 80000000) * 0.30;
+        }
+
+        return `Total income tax is : ${tax.toFixed(2)} VND`;
+    }
+
+</script>
+</body>
+</html>

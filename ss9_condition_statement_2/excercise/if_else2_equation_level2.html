@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equation level2</title>
+</head>
+<body>
+<script>
+  let a = parseFloat(prompt("Enter number a"));
+  let b= parseFloat(prompt("Enter number b"));
+  let c= parseFloat(prompt("Enter number c"));
+  let x, delta, x1, x2 ;
+
+  if(a===0){
+    //tro ve phuong trinh bac 1
+    if(b===0){
+      if(c===0){
+        alert("Equation with infinite solution");
+      }  else{
+        alert("Equation with no solution");
+      }
+    }
+    else {
+      x = -c / b;
+      alert("Solution of equation is: " + x);
+    }
+  }
+  else{
+    //tinh delta
+    delta = b * b - 4 * a * c;
+    if (delta > 0) {
+       x1 = (-b + Math.sqrt(delta)) / (2 * a);
+       x2 = (-b - Math.sqrt(delta)) / (2 * a);
+      alert(" Equation have two solution :"+ x1 +"and"+ x2) ;
+    } else if (delta === 0) {
+      x = -b / (2 * a);
+      alert(" Equation have double solution : "+ x) ;
+    } else {
+      alert("Equation with no solution");
+    }
+  }
+</script>
+</body>
+</html>

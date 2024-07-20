@@ -8,6 +8,7 @@
 <script>
     let callTime = +prompt("Enter the number minutes you called");
         let fee = 500;
+
         if (callTime >= 50) {
             fee = fee* 50 + fee*2*(callTime-50);
         } else if (callTime >= 25) {
@@ -15,7 +16,7 @@
         } else {
             fee = fee*callTime;
         }
-          alert("Your fee is: "+ fee);
+    alert("Your fee is: "+ fee);
 </script>
 </body>
 </html>
