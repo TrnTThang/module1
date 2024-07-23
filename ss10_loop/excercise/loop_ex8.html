@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function playGame() {
+        let min = parseInt(prompt("Nhập số nhỏ nhất của khoảng:"));
+        let max = parseInt(prompt("Nhập số lớn nhất của khoảng:"));
+        if (isNaN(min) || isNaN(max) || min >= max) {
+            alert("Vui lòng nhập khoảng hợp lệ.");
+        }
+
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        let userGuess;
+        while (true) {
+            userGuess = parseInt(prompt("Nhập giá trị bạn đoán:"));
+            if (userGuess === randomNumber) {
+                alert("Chúc mừng! Bạn đã đoán đúng số.");
+                break;
+            } else if (userGuess < randomNumber) {
+                alert("Số bạn đoán quá nhỏ. Hãy thử lại.");
+            } else {
+                alert("Số bạn đoán quá lớn. Hãy thử lại.");
+            }
+        }
+    }
+    playGame();
+
+</script>
+</body>
+</html>

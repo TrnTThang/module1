@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+        let number1 = 0, number2 = 1, temp, fib = 0, i = 0;
+
+        while (i < 20) {
+        fib += number1;
+        temp = number1 + number2;
+        number1 = number2;
+        number2 = temp;
+        i++;
+    }
+
+        document.write("Sum of the first 20 Fibonacci numbers: " + fib);
+</script>
+</script>
+</body>
+</html>

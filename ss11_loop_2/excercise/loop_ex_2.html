@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function factorial(n) {
+    if (n < 0) {
+      alert("Giai thừa không xác định cho số âm");
+    }
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+      result *= i;
+    }
+    return result ;
+  }
+  let number = parseInt(prompt("Nhập số tính giai thừa: "))
+  document.write("Giai thừa của " + number + " là: " + factorial(number));
+</script>
+</body>
+</html>

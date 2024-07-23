@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle Border Only</title>
+
+</head>
+<body>
+<div></div>
+<script>
+    let width = parseInt(prompt("Enter width of rectangle"));
+    let height = parseInt(prompt("Enter height of rectangle"));
+    let rectangle = "";
+    for (let i = 1; i <= width; i++) {
+        for (let j = 1; j <= height; j++) {
+            if (i === 1 || i === width) {
+                rectangle += "*";
+            } else if (j === 1 || j === height) {
+                rectangle += "*";
+            } else {
+                rectangle += "&nbsp;&nbsp;";
+            }
+        }
+        rectangle += "<br>"
+    }
+    document.write(rectangle);
+</script>
+</body>
+</html>

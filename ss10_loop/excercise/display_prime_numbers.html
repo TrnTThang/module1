@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display prime numbers</title>
+</head>
+<body>
+<script>
+  let count =0;
+  let output = "";
+  let n = parseInt(prompt("nhap n so nguyen to dau tien "));
+  for (let i = 2; count < n; i++) {
+      if (primeNumber(i)) {
+          count++;
+          output += i + " ";
+      }
+  }
+  document.write(output);
+
+  function primeNumber(input) {
+      if (input===2){
+          return true;
+      } else {
+          for (let i = 2; i < input; i++) {
+              if (input % i ===0){
+                  return false;
+              }
+          }
+      }
+      return true;
+  }
+</script>
+</body>
+</html>

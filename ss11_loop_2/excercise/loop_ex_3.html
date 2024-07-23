@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="triangle" class="triangle"></div>
+<script>
+    let triangle = "";
+    for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= i; j++) {
+            triangle += "*";
+        }
+        triangle += "<br>";
+    }
+    document.getElementById('triangle').innerHTML = triangle + "<br>";
+
+    triangle = "";
+    for (let i = 5; i > 0; i--) {
+        for (let j = 1; j <= i; j++) {
+            triangle += "*";
+        }
+        triangle += "<br>";
+    }
+    document.getElementById('triangle').innerHTML += triangle;
+</script>
+</body>
+</html>
