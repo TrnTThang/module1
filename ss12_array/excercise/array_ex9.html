@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact array</title>
+</head>
+<body>
+ <script>
+     let arrayA = [], arrayB = [], arrayC = [];
+
+     for (let i = 0; i < 10; i++) {
+         arrayA[i] = Math.floor(Math.random() * 100);
+         arrayB[i] = Math.floor(Math.random() * 100);
+     }
+     for (let i = 0; i < 20; i++) {
+         if (i < 10) {
+             arrayC.push(arrayA[i]);
+         } else {
+             arrayC.push(arrayB[i - 10]);
+         }
+     }
+     alert("Array C: " + arrayC.toString());
+ </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display the biggest number and average of random array number </title>
+</head>
+<body>
+<script>
+    //random array number with different element, use to code ex2
+    let array = [];
+    while (array.length < 11 ){
+        let random =Math.floor(Math.random()*201)-100; // Math.floor(Math.random() * (max - min + 1)) + min
+        if (!array.includes(random)){
+            array.push(random);
+        }
+    }
+    //Find the biggest number
+    let tmp = array[0];
+    for (let i = 1; i < array.length; i++) {
+        if (array[i]>tmp){
+            tmp = array[i];
+        }
+    }
+    //Sum and average array number
+    //Hàm Callback (accumulator, currentValue) => accumulator + currentValue
+    let sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    let average = sum / array.length;
+    alert("The biggest number random array is: "+ tmp + "\n The average is "+ average.toFixed(2));
+</script>
+</body>
+</html>

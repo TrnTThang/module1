@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>some functions of array</title>
+
+</head>
+<body>
+<div></div>
+<script>
+    //lesson 1 contact index of array
+    let  myColor = ["Red", "Green", "White", "Black"];
+    let result = "";
+
+    for (let i = 0; i < myColor.length; i++) {
+        result += myColor[i] + " ";
+    }
+    document.write(result);
+
+
+    //lesson 2 add "-" between two even numbers
+    let  number = parseInt(prompt("Enter numbers"));
+    let  string = number.toString(); //string
+    let result2 = [string[0]];        //string
+
+    for (let i = 0; i < string.length; i++) {
+        if (string[i - 1] % 2 === 0 && string[i] % 2 === 0){
+            result2.push("-", string[i]);
+        } else {
+            result2.push(string[i]);
+        }
+    }
+    document.write(result2.join(''));
+
+
+     //lesson 3 add "-" between two even numbers
+     let  enterString = prompt("Enter numbers");
+     let result3 = "";
+
+     for (let i = 0; i < enterString.length; i++) {
+         let char = enterString[i];
+         if(char===char.toLowerCase()){
+             result3 += char.toUpperCase();
+         } else  if (char===char.toUpperCase()){
+             result3 += char.toLowerCase();
+         } else {
+             result3 += char;
+         }
+     }
+     document.write(result3);
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary with some words</title>
+</head>
+<body>
+    <label for="inString">Enter your word <br> </label>
+    <input type="text" id="inString">
+    <button id="translateButton">Translate</button> <br>
+    <label for="outString">Translation:</label>
+    <output id="outString"></output>
+
+    <script>
+        function translate() {
+            let arrEng = ["banana", "apple", "orange", "pen", "pencil", "book"];
+            let arrVie = ["chuối", "táo", "cam", "bút", "bút chì", "sách"];
+            let result = "";
+            let inString = document.getElementById('inString').value.toLowerCase();
+
+           for (let i = 0; i < arrEng.length; i++) {
+                if (inString === arrEng[i]){
+                   result = arrVie[i];
+                   break;
+                }
+            }
+            document.getElementById('outString').innerText = result;
+        }
+        document.getElementById('translateButton').onclick = translate;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Initialize random array and display int the biggest number </title>
+</head>
+<body>
+<script>
+    let array = [];
+
+    while (array.length < 11 ){
+        let random =Math.floor(Math.random()*201)-100; // Math.floor(Math.random() * (max - min + 1)) + min
+        if (!array.includes(random)){
+            array.push(random);
+        }
+    }
+    let tmp = array[0];
+    let index;
+    for (let i = 1; i < array.length; i++) {
+        if (array[i]>tmp){
+            tmp = array[i];
+            index = i;
+        }
+    }
+    alert("the biggest number random array is: "+ tmp +" and position is "+ index);
+</script>
+</body>
+</html>

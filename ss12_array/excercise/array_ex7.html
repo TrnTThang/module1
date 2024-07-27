@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let array = [];
+        for (let i = 0; i < 10; i++) {
+            array[i] = Math.floor(Math.random() * 20);
+        }
+
+        let enterNumber = parseInt(prompt("Enter the integer number:"));
+        let index = array.indexOf(enterNumber);
+        console.log(index);
+        if (index !== -1) {
+            for (let i = index; i < array.length-1; i++) {
+                array[i] = array[i + 1];
+            }
+            array[array.length - 1] = 0;
+
+            alert("The number " + enterNumber + " was removed from the array.");
+        } else {
+            alert("The number " + enterNumber + " is not in the array.");
+        }
+        console.log("Updated array:", array);
+    </script>
+</body>
+</html>

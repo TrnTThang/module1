@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check</title>
+</head>
+<body>
+<script>
+    let array = [];
+    for (let i = 0; i < 10; i++) {
+        array[i] = Math.floor(Math.random() * 100);
+    }
+    let enterNumber = parseInt(prompt("Enter the integer number :"));
+    for (let i = 0; i < 10; i++) {
+        if (array.includes(enterNumber)) {
+            alert("V is in the array");
+            break;
+        } else {
+            alert("V isn't in the array");
+            break;
+        }
+    }
+</script>
+</body>
+</html>

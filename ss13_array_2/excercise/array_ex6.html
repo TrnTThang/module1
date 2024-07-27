@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Replace Character in Array</title>
+</head>
+<body>
+<label for="inputString">Enter characters :</label>
+<input type="text" id="inputString" >
+<button onclick="replaceCharacter()">Replace</button>
+<p id="result"></p>
+
+<script>
+    function replaceCharacter() {
+        let input = document.getElementById("inputString").value;
+        let charArray = input.split(',');
+       // console.log(charArray)
+        for (let i = 0; i < charArray.length; i++) {
+            if (charArray[i] === '-') {
+                charArray[i] = '_';
+            }
+        }
+        document.getElementById("result").innerText = "Updated array: " + charArray.join(',');
+    }
+</script>
+</body>
+</html>
