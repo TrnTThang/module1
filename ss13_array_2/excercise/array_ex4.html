@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word Count</title>
+</head>
+<body>
+<label for="inputString">Enter a string:</label>
+<input type="text" id="inputString" placeholder="Enter your text here">
+<button onclick="countWords()">Count Words</button>
+<p id="wordCount"></p>
+
+<script>
+    function countWords() {
+        let inputString = document.getElementById("inputString").value.trim();
+        let words = inputString.split(" ");
+        let count = 0;
+
+        for (let word of words) {
+            if (!isNaN(word[0])) {
+                continue;
+            }
+            count++;
+        }
+
+        document.getElementById("wordCount").textContent = "The number of valid words in the string is " + count;
+    }
+</script>
+</body>
+</html>

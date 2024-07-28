@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Count Digits in Array</title>
+</head>
+<body>
+<label for="inputArray">Enter your array:</label>
+<input type="text" id="inputArray" placeholder="hello00">
+<button onclick="result()">Count digits in array</button>
+<label for="outArray">Result is:</label>
+<output id="outArray"></output>
+
+<script>
+    function result() {
+        let checkNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+        let inputArray = document.getElementById("inputArray").value;
+        let count = 0;
+
+        for (let i of inputArray) {
+            if (checkNumber.includes(i)) {
+                count++;
+            }
+        }
+        console.log(inputArray);
+        console.log(inputArray.length);
+        document.getElementById("outArray").textContent = count;
+    }
+</script>
+</body>
+</html>
