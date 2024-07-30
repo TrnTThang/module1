@@ -2,29 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Remove Duplicates from Array</title>
 </head>
 <body>
-    <script>
-        let array = [];
-        for (let i = 0; i < 10; i++) {
-            array[i] = Math.floor(Math.random() * 20);
-        }
+<script>
+    let array = [1, 2,  4, "5", "6", 2, "8", "9"];
+    let enterNumber = parseInt(prompt("Enter the integer number:"));
 
-        let enterNumber = parseInt(prompt("Enter the integer number:"));
-        let index = array.indexOf(enterNumber);
-        console.log(index);
-        if (index !== -1) {
-            for (let i = index; i < array.length-1; i++) {
+    let indices = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === enterNumber) {
+            indices.push(i);
+        }
+    }
+
+    if (indices.length > 0) {
+        for (let index of indices.reverse()) {
+            for (let i = index; i < array.length - 1; i++) {
                 array[i] = array[i + 1];
+                console.log(array);
             }
             array[array.length - 1] = 0;
-
-            alert("The number " + enterNumber + " was removed from the array.");
-        } else {
-            alert("The number " + enterNumber + " is not in the array.");
         }
-        console.log("Updated array:", array);
-    </script>
+        alert("The number " + enterNumber + " was removed");
+    } else {
+        alert("The number " + enterNumber + " dont have in the array.");
+    }
+   console.log("Updated array:", array);//
+</script>
 </body>
 </html>
