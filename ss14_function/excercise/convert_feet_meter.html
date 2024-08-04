@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Covert between feet and meter</title>
+</head>
+<body>
+<div id="resultConvert"></div>
+<script>
+    let feet = parseFloat(prompt("Enter feet"));
+    let meter = parseFloat(prompt("Enter meter"));
+    function footToMeter(feet) {
+        return (0.305 * feet).toFixed(2);
+    }
+    function meterToFoot(meter) {
+        return (3.279 * meter).toFixed(2);
+    }
+    document.getElementById("resultConvert").innerHTML = feet+" feet = " + footToMeter(feet) + " meter<br>" + meter + " = " + meterToFoot(meter) + " foot";
+</script>
+
+</body>
+</html>

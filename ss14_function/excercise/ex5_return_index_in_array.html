@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrStar = ["polaris", "aldebaran", "deneb", "vega", " altair", "dubhe", "regulus"];
+    let arrConstellation = ["ursa", "minor", "taurus", "cygnus", "lyra", "aquila", "ursa major", "leo"]
+
+    function starName(starName) {
+        let index = arrStar.indexOf(starName.toLowerCase());
+        if (index !== -1) {
+            return arrConstellation[index];
+        } else {
+            return "Don't have any star";
+        }
+    }
+
+    let message = starName(prompt("Enter a star:"));
+    document.write(message);
+</script>
+</body>
+</html>
