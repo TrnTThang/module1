@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Factorial</title>
 </head>
 <body>
-$END$
+<script>
+    function calFactorial() {
+        let intNumber = parseInt(prompt("Enter a integer number"));
+        let result = 1;
+        for (let i = 1; i <= intNumber; i++) {
+            result *= i;
+        }
+        alert(result);
+    }
+
+    calFactorial();
+</script>
+
 </body>
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check integer number</title>
+</head>
+<body>
+<script>
+    let num = +prompt("Enter number");
+    if (checkInteger(num)) {
+        alert("this is a integer number")
+    } else {
+        alert("this is not a integer number")
+
+    }
+
+    function checkInteger(input) {
+        return Number.isInteger(input) && input > 0;
+    }
+</script>
+</body>
+</html>

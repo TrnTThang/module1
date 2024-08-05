@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*alert("the smallest number is: "+ findSmallNum(5, 5, 7));
+    function findSmallNum(num1, num2, num3) {
+        return Math.min(...);
+    }*/
+
+    // Hiện thị số bé nhất của dãy.
+    let array = [];
+
+    while (true) {
+        let input = prompt("Enter the number: ");
+        if (input === null) {
+            break;
+        }
+        let num = parseFloat(input)
+        if (!isNaN(num)) {
+            array.push(num);
+        } else {
+            alert("Let enter numeric ");
+        }
+    }
+
+    if (array.length > 0) {
+        let smallest = findSmallNum(array);
+        alert("The smallest number is: " + smallest);
+    } else {
+        alert(" No numbers were entered");
+    }
+
+
+    function findSmallNum(array) {
+        return Math.min(...array);
+    }
+
+</script>
+</body>
+</html>

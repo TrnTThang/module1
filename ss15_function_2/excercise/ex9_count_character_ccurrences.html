@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function countCharacterOccurrences(charArray, charToCheck) {
+        let count = 0;
+        for (let char of charArray) {
+            if (char === charToCheck) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    let charArray = ['a', 'b', 'c', 'a', 'd', 'a'];
+    let charToCheck1 = 'a';
+
+    console.log(countCharacterOccurrences(charArray, charToCheck1));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let string = prompt("Enter a array");
+    let arr = string.split("");
+    console.log(arr);
+    alert("The array after reverse is: " + reverseArray(arr));
+
+    //string.split("").reverse().join("");
+    function reverseArray(array) {
+        let j = array.length - 1
+        let i = 0;
+        let tmp;
+        while (i < j) {
+            tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+            i++;
+            j--;
+        }
+        return array;
+    }
+</script>
+</body>
+</html>

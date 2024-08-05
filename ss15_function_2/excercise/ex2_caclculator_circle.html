@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <script>
+        let radius = +prompt("Enter radius of circle : ");
+        let perimeter = circlePerimeter(radius);
+        let area = circleArea(radius);
+
+        function circlePerimeter(radius) {
+            return (2 * Math.PI * radius).toFixed(2);
+        }
+
+        function circleArea(radius) {
+            return (Math.PI * radius * radius).toFixed(2);
+        }
+
+        document.write("Circle perimeter = " + perimeter + "<br> Circle area = " + area);
+    </script>
 </body>
 </html>

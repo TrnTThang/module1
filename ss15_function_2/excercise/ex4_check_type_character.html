@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check type number</title>
+</head>
+<body>
+<script>
+    let inputChar = prompt("Enter input: ");
+    if (checkTypeNumber(inputChar)) {
+        alert("the character entered is a number ")
+    } else {
+        alert("the character entered is not a number ")
+    }
+
+    function checkTypeNumber(char) {
+        /* if (!isNaN(char)){
+             return true;
+         } else {
+             return false;
+         }*/
+        return !isNaN(char);
+    }
+</script>
+</body>
+</html>
