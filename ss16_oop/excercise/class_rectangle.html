@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle Demo</title>
+    <style>
+        #paint {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="paint" width="600" height="400"></canvas>
+<div id="display"></div>
+
+<script>
+    class Rectangle {
+        constructor(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        getArea() {
+            return this.length * this.width;
+        }
+
+        getCircumference() {
+            return (this.width + this.length) * 2;
+        }
+
+        displayRectangle() {
+            let canvas = document.getElementById("paint");
+            let ctx = canvas.getContext("2d");
+            // ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeRect(20, 20, this.width, this.length);
+        }
+    }
+
+    let rectangle = new Rectangle(400, 200);
+    rectangle.length = 300;
+    rectangle.width = 100;
+    rectangle.displayRectangle();
+    document.getElementById("display").innerHTML =
+        "Area: " + rectangle.getArea() + "<br>Circumference: " + rectangle.getCircumference();
+</script>
+</body>
+</html>
