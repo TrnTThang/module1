@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    class Apple {
+        #weight;
+
+        constructor() {
+            this.#weight = 10;
+        }
+
+        decrease() {
+            if (this.#weight > 0) {
+                this.#weight--;
+            }
+        }
+
+        isEmpty() {
+            return this.#weight === 0;
+        }
+
+        getWeight() {
+            return this.#weight
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        isMale() {
+            return this.gender === 'true';
+        }
+
+        setGender(gender) {
+            this.gender = gender;
+        }
+
+        checkApple(apple) {
+            return !apple.isEmpty();
+        }
+
+        eat(apple) {
+            if (this.checkApple(apple)) {
+                apple.decrease();
+                let newWeight = this.getWeight() + 1;
+                this.setWeight(newWeight);
+            }
+        }
+
+        say(string) {
+            console.log(`${this.name} say: ${string}`);
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(newName) {
+            this.name = newName;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setWeight(newWeight) {
+            this.weight = newWeight;
+        }
+
+    }
+
+    let adam = new Human("Adam",true,64);
+    let eva = new Human("Adam",false,51);
+    let apple = new Apple();
+    adam.say("I love you");
+    eva.say("I love you, too");
+    while (!apple.isEmpty()) {
+
+        console.log(apple.getWeight());
+        adam.eat(apple);
+        console.log(`Adam has eaten a piece of apple. Apple weight: ${apple.getWeight()}, Adam's weight: ${adam.getWeight()}`);
+        eva.eat(apple);
+        console.log(`Eva has been eaten apple, the weight apple has: ${apple.getWeight()}, the weight Eva has ${eva.getWeight()} `);
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Mobile {
+        constructor(name) {
+            this.name = name;
+            this.battery = 100;
+            this.isOn = false;
+            this.draftMessage = '';
+            this.inbox = [];
+            this.sentMessages = [];
+        }
+
+        checkPowerStatus() {
+            return this.isOn;
+        }
+
+        powerOn() {
+            if (!this.isOn) {
+                this.isOn = true;
+                console.log(`${this.name} is now ON.`);
+            } else {
+                console.log(`${this.name} is already ON.`);
+            }
+        }
+
+        powerOff() {
+            if (this.isOn) {
+                this.isOn = false;
+                console.log(`${this.name} is now OFF.`);
+            } else {
+                console.log(`${this.name} is already OFF.`);
+            }
+        }
+
+        chargeBattery() {
+            this.battery = 100;
+            console.log(`${this.name} is fully charged.`);
+        }
+
+        draftaMessage(content) {
+            if (this.isOn) {
+                this.draftMessage = content;
+                this.battery--;
+                console.log(`${this.name} drafted a message: "${content}"`);
+            } else {
+                console.log(`${this.name} is OFF. Cannot draft message.`);
+            }
+        }
+
+        sendMessage(receiver) {
+            if (this.isOn && this.draftMessage !== '') {
+                receiver.receiveMessage(this.draftMessage, this.name);
+                this.sentMessages.push(this.draftMessage);
+                this.draftMessage = '';
+                this.battery--;
+                console.log(`${this.name} sent a message.`);
+            } else {
+                console.log(`${this.name} is OFF or no message to send.`);
+            }
+        }
+
+        receiveMessage(message, senderName) {
+            if (this.isOn) {
+                this.inbox.push({message: message, sender: senderName});
+                this.battery--;
+                console.log(`${this.name} received a message from ${senderName}.`);
+            } else {
+                console.log(`${this.name} is OFF. Cannot receive message.`);
+            }
+        }
+
+        viewInbox() {
+            if (this.isOn) {
+                console.log(`Inbox of ${this.name}:`);
+                this.inbox.forEach((msg, index) => {
+                    console.log(`${index + 1}. From ${msg.sender}: "${msg.message}"`);
+                });
+                this.battery--;
+            } else {
+                console.log(`${this.name} is OFF. Cannot view inbox.`);
+            }
+        }
+
+        viewSentMessages() {
+            if (this.isOn) {
+                console.log(`Sent messages of ${this.name}:`);
+                this.sentMessages.forEach((msg, index) => {
+                    console.log(`${index + 1}. "${msg}"`);
+                });
+                this.battery--;
+            } else {
+                console.log(`${this.name} is OFF. Cannot view sent messages.`);
+            }
+        }
+    }
+
+    // Tạo đối tượng điện thoại Nokia và iPhone
+    let nokia = new Mobile('Nokia');
+    let iphone = new Mobile('iPhone');
+
+    // Bật điện thoại
+    nokia.powerOn();
+    iphone.powerOn();
+
+    // Nokia soạn tin nhắn
+    nokia.draftaMessage('Hello from Nokia!');
+
+    // Nokia gửi tin nhắn cho iPhone
+    nokia.sendMessage(iphone);
+
+    // iPhone kiểm tra hộp thư đến và hiển thị tin nhắn
+    iphone.viewInbox();
+</script>
+</body>
+</html>
