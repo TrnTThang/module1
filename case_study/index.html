@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Đơn Hàng</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<h1>Quản Lý Đơn Hàng Quán Ăn</h1>
+
+<div class="menu">
+    <h2>Chọn Bàn hoặc Loại Đơn</h2>
+    <table id="selection-table">
+        <tr>
+            <td>
+                <select id="table-or-type" onchange="selectOption(this.value)">
+                    <option value="">Chọn Bàn hoặc Loại Đơn</option>
+                    <option value="Bàn 1">Bàn 1</option>
+                    <option value="Bàn 2">Bàn 2</option>
+                    <option value="Bàn 3">Bàn 3</option>
+                    <option value="Bàn 4">Bàn 4</option>
+                    <option value="Bàn 5">Bàn 5</option>
+                    <option value="Bàn 6">Bàn 6</option>
+                    <option value="Mang về">Mang về</option>
+                    <option value="Đơn ngoài">Đơn ngoài</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="menu">
+    <h2>Chọn Món Ăn và Số Lượng</h2>
+    <table id="food-table">
+        <tr>
+            <td>
+                <select id="food">
+                    <option value="">Chọn Món Ăn</option>
+                </select>
+            </td>
+            <td>
+                <input type="number" id="quantity" min="1" placeholder="Số lượng">
+            </td>
+            <td>
+                <button onclick="updateFoodSelection()">Thêm vào Đơn</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="menu">
+    <h2>Danh Sách Món Ăn</h2>
+    <table id="menu-list">
+        <thead>
+        <tr>
+            <th>Tên Món Ăn</th>
+            <th>Giá</th>
+            <th colspan="2">Thao Tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div class="menu">
+    <h2>Đơn Hàng Chưa Thanh Toán</h2>
+    <table id="unpaid-orders">
+        <thead>
+        <tr>
+            <th>Loại Đơn</th>
+            <th>Món Ăn</th>
+            <th>Số Lượng</th>
+            <th>Thao Tác</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div class="menu">
+    <h2>Đơn Hàng Đã Thanh Toán</h2>
+    <table id="paid-orders">
+        <thead>
+        <tr>
+            <th>Loại Đơn</th>
+            <th>Món Ăn</th>
+            <th>Số Lượng</th>
+            <th>Tổng Giá</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
