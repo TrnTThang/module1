@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Đơn Hàng</title>
+    <title>Order Management</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<h1>Quản Lý Đơn Hàng Quán Ăn</h1>
+<h1>Restaurant Order Management</h1>
 
 <div class="menu">
-    <h2>Chọn Bàn hoặc Loại Đơn</h2>
+    <h2>Select Table or Order Type</h2>
     <table id="selection-table">
         <tr>
             <td>
                 <select id="table-or-type" onchange="selectOption(this.value)">
-                    <option value="">Chọn Bàn hoặc Loại Đơn</option>
-                    <option value="Bàn 1">Bàn 1</option>
-                    <option value="Bàn 2">Bàn 2</option>
-                    <option value="Bàn 3">Bàn 3</option>
-                    <option value="Bàn 4">Bàn 4</option>
-                    <option value="Bàn 5">Bàn 5</option>
-                    <option value="Bàn 6">Bàn 6</option>
-                    <option value="Mang về">Mang về</option>
-                    <option value="Đơn ngoài">Đơn ngoài</option>
+                    <option value="">Select Table or Order Type</option>
+                    <option value="Table 1">Table 1</option>
+                    <option value="Table 2">Table 2</option>
+                    <option value="Table 3">Table 3</option>
+                    <option value="Table 4">Table 4</option>
+                    <option value="Table 5">Table 5</option>
+                    <option value="Table 6">Table 6</option>
+                    <option value="Takeaway">Takeaway</option>
+                    <option value="Outside Order">Outside Order</option>
                 </select>
             </td>
         </tr>
@@ -31,66 +31,75 @@
 </div>
 
 <div class="menu">
-    <h2>Chọn Món Ăn và Số Lượng</h2>
+    <h2>Select Food and Quantity</h2>
     <table id="food-table">
         <tr>
             <td>
-                <select id="food">
-                    <option value="">Chọn Món Ăn</option>
+                <select id="food" class="food" onchange="populateQuantityOptions()">
+                    <option value="">Select Food</option>
                 </select>
             </td>
             <td>
-                <input type="number" id="quantity" min="1" placeholder="Số lượng">
+                <select id="quantity" class="quantity">
+                    <option value="">Select Quantity</option>
+                    <!-- Quantity options will be populated dynamically -->
+                </select>
             </td>
             <td>
-                <button onclick="updateFoodSelection()">Thêm vào Đơn</button>
+                <button onclick="addToOrder()">Add to Order</button>
             </td>
         </tr>
     </table>
 </div>
 
 <div class="menu">
-    <h2>Danh Sách Món Ăn</h2>
-    <table id="menu-list">
+    <h2>Menu List</h2>
+    <table class="menu-list">
         <thead>
         <tr>
-            <th>Tên Món Ăn</th>
-            <th>Giá</th>
-            <th colspan="2">Thao Tác</th>
+            <th>Food Name</th>
+            <th>Price</th>
+            <th colspan="2">Actions</th>
         </tr>
         </thead>
         <tbody>
+        <!-- Menu items will be populated dynamically -->
+        </tbody>
+    </table>
+    <button onclick="addMenuItem()">Add Food Item</button>
+</div>
+
+<div class="menu">
+    <h2>Unpaid Orders</h2>
+    <table class="unpaid-orders">
+        <thead>
+        <tr>
+            <th>Order Type</th>
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Unpaid orders will be populated dynamically -->
         </tbody>
     </table>
 </div>
 
 <div class="menu">
-    <h2>Đơn Hàng Chưa Thanh Toán</h2>
-    <table id="unpaid-orders">
+    <h2>Paid Orders</h2>
+    <table class="paid-orders">
         <thead>
         <tr>
-            <th>Loại Đơn</th>
-            <th>Món Ăn</th>
-            <th>Số Lượng</th>
-            <th>Thao Tác</th>
+            <th>Order Type</th>
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Price</th>
         </tr>
         </thead>
-        <tbody></tbody>
-    </table>
-</div>
-
-<div class="menu">
-    <h2>Đơn Hàng Đã Thanh Toán</h2>
-    <table id="paid-orders">
-        <thead>
-        <tr>
-            <th>Loại Đơn</th>
-            <th>Món Ăn</th>
-            <th>Số Lượng</th>
-            <th>Tổng Giá</th>
-        </tr>
-        </thead>
-        <tbody></tbody>
+        <tbody>
+        <!-- Paid orders will be populated dynamically -->
+        </tbody>
     </table>
 </div>
 

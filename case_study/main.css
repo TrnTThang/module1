@@ -12,13 +12,6 @@ h1, h2 {
     text-align: center;
 }
 
-button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 table {
     width: 100%;
     margin-top: 10px;
@@ -34,7 +27,19 @@ th, td {
     text-align: center;
 }
 
-select {
+button {
+    margin: 5px;
+    padding: 10px 20px;
     font-size: 16px;
+    cursor: pointer;
+}
+
+.action-btn {
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+select {
     padding: 5px;
+    font-size: 16px;
 }
