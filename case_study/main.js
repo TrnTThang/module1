@@ -1,4 +1,3 @@
-// Class to represent a MenuItem
 class MenuItem {
     constructor(name, price) {
         this.name = name;
@@ -6,52 +5,164 @@ class MenuItem {
     }
 }
 
-// Class to manage the menu list
-class Menu {
+class OrderManager {
     constructor() {
-        this.items = [];
+        this.selectedTableOrType = '';
+        this.menuList = [
+            new MenuItem('Phở', 35),
+            new MenuItem('Cơm Tấm', 30),
+            new MenuItem('Gà Rán', 35),
+            new MenuItem('Bún', 35),
+            new MenuItem('Bánh Mì', 35)
+        ];
+        document.addEventListener('DOMContentLoaded', this.init.bind(this));
     }
 
-    addItem(name, price) {
-        this.items.push(new MenuItem(name, parseFloat(price)));
-        this.updateMenuList();
+    init() {
         this.populateFoodOptions();
+        this.updateMenuList();
     }
 
-    updateItem(oldName, newName, newPrice) {
-        const item = this.items.find(item => item.name === oldName);
-        if (item) {
-            item.name = newName;
-            item.price = parseFloat(newPrice);
+    selectOption(option) {
+        this.selectedTableOrType = option;
+        alert('Bạn đã chọn: ' + option);
+    }
+
+    updateFoodSelection() {
+        const foodSelect = document.getElementById('food');
+        const quantityInput = document.getElementById('quantity');
+        const selectedFood = foodSelect.value;
+        const quantity = parseInt(quantityInput.value, 10);
+
+        if (selectedFood && quantity > 0) {
+            this.selectFood(selectedFood, quantity);
+        }
+    }
+
+    selectFood(food, quantity) {
+        if (!this.selectedTableOrType) {
+            alert('Vui lòng chọn bàn hoặc loại đơn trước.');
+            return;
+        }
+
+        if (!food) return;
+
+        const unpaidOrdersTable = document.getElementById('unpaid-orders').getElementsByTagName('tbody')[0];
+        const existingRow = Array.from(unpaidOrdersTable.rows).find(function(row) {
+            return row.cells[0].innerHTML === this.selectedTableOrType && row.cells[1].innerHTML.includes(food);
+        }.bind(this));
+
+        if (existingRow) {
+            // Update quantity in existing row
+            const quantityCell = existingRow.cells[2];
+            const currentQuantity = parseInt(quantityCell.innerHTML, 10);
+            quantityCell.innerHTML = currentQuantity + quantity;
+            const foodCell = existingRow.cells[1];
+            foodCell.innerHTML = `${food} (${currentQuantity + quantity})`;
+        } else {
+            // Create new row for new table/type
+            const newRow = unpaidOrdersTable.insertRow();
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+
+            cell1.innerHTML = this.selectedTableOrType;
+            cell2.innerHTML = `${food} (${quantity})`;
+            cell3.innerHTML = quantity;
+            cell4.innerHTML = '<button onclick="orderManager.markAsPaid(this)">Thanh Toán</button>';
+        }
+
+        // Clear selection and quantity
+        document.getElementById('food').value = '';
+        document.getElementById('quantity').value = '';
+    }
+
+    markAsPaid(button) {
+        const row = button.parentNode.parentNode;
+        const unpaidOrdersTable = document.getElementById('unpaid-orders').getElementsByTagName('tbody')[0];
+        const paidOrdersTable = document.getElementById('paid-orders').getElementsByTagName('tbody')[0];
+
+        // Extract data from the row
+        const tableOrType = row.cells[0].innerHTML;
+        const food = row.cells[1].innerHTML.split(' (')[0];
+        const quantity = parseInt(row.cells[2].innerHTML, 10);
+        const price = this.menuList.find(function(item) {
+            return item.name === food;
+        }).price;
+        const totalPrice = price * quantity;
+
+        // Create new row for the paid orders table
+        const newRow = paidOrdersTable.insertRow();
+        newRow.innerHTML = `
+            <td>${tableOrType}</td>
+            <td>${food}</td>
+            <td>${quantity}</td>
+            <td>${totalPrice}</td>
+        `;
+
+        // Remove the row from the unpaid orders table
+        row.parentNode.removeChild(row);
+    }
+
+    addMenuItem() {
+        const name = prompt('Nhập tên món ăn:');
+        const price = prompt('Nhập giá món ăn:');
+        if (name && price && !isNaN(price)) {
+            this.menuList.push(new MenuItem(name, parseFloat(price)));
             this.updateMenuList();
             this.populateFoodOptions();
         }
     }
 
-    deleteItem(name) {
-        this.items = this.items.filter(item => item.name !== name);
-        this.updateMenuList();
-        this.populateFoodOptions();
+    editMenuItem(button) {
+        const row = button.parentNode.parentNode;
+        const nameCell = row.cells[0];
+        const priceCell = row.cells[1];
+
+        const newName = prompt('Nhập tên món ăn mới:', nameCell.innerHTML);
+        const newPrice = prompt('Nhập giá món ăn mới:', priceCell.innerHTML);
+
+        if (newName && newPrice && !isNaN(newPrice)) {
+            nameCell.innerHTML = newName;
+            priceCell.innerHTML = parseFloat(newPrice);
+            this.updateMenuList();
+            this.populateFoodOptions();
+        }
+    }
+
+    deleteMenuItem(button) {
+        const row = button.parentNode.parentNode;
+        if (confirm('Bạn có chắc chắn muốn xóa món ăn này?')) {
+            const name = row.cells[0].innerHTML;
+            this.menuList = this.menuList.filter(function(item) {
+                return item.name !== name;
+            });
+            this.updateMenuList();
+            this.populateFoodOptions();
+            row.parentNode.removeChild(row);
+        }
     }
 
     updateMenuList() {
-        const menuListTable = document.querySelector('.menu-list tbody');
+        const menuListTable = document.getElementById('menu-list').getElementsByTagName('tbody')[0];
         menuListTable.innerHTML = '';
-        this.items.forEach(item => {
+
+        this.menuList.forEach(function(item) {
             const newRow = menuListTable.insertRow();
             newRow.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.price}</td>
-                <td><button class="action-btn" onclick="menu.editItem('${item.name}')">Sửa</button></td>
-                <td><button class="action-btn" onclick="menu.deleteItem('${item.name}')">Xóa</button></td>
+                <td><button class="action-btn" onclick="orderManager.editMenuItem(this)">Sửa</button></td>
+                <td><button class="action-btn" onclick="orderManager.deleteMenuItem(this)">Xóa</button></td>
             `;
         });
     }
 
     populateFoodOptions() {
-        const foodSelect = document.querySelector('.food');
+        const foodSelect = document.getElementById('food');
         foodSelect.innerHTML = '<option value="">Chọn Món Ăn</option>';
-        this.items.forEach(item => {
+        this.menuList.forEach(function(item) {
             const option = document.createElement('option');
             option.value = item.name;
             option.textContent = item.name;
@@ -60,139 +171,10 @@ class Menu {
     }
 }
 
-// Class to represent an Order
-class Order {
-    constructor(tableOrType) {
-        this.tableOrType = tableOrType;
-        this.items = [];
-    }
+// Create a single instance of OrderManager
+const orderManager = new OrderManager();
 
-    addItem(menuItem, quantity) {
-        const existingItem = this.items.find(item => item.name === menuItem.name);
-        if (existingItem) {
-            existingItem.quantity += quantity;
-        } else {
-            this.items.push({ ...menuItem, quantity });
-        }
-    }
-
-    removeItem(name) {
-        this.items = this.items.filter(item => item.name !== name);
-    }
-
-    calculateTotal() {
-        return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
-    }
-
-    renderOrderTable(isPaid) {
-        const tableSelector = isPaid ? '.paid-orders tbody' : '.unpaid-orders tbody';
-        const ordersTable = document.querySelector(tableSelector);
-        ordersTable.innerHTML = '';
-
-        this.items.forEach(item => {
-            const newRow = ordersTable.insertRow();
-            newRow.innerHTML = `
-                <td>${this.tableOrType}</td>
-                <td>${item.name}</td>
-                <td>${item.quantity}</td>
-                ${!isPaid ? '<td><button class="pay-btn">Thanh Toán</button></td>' : ''}
-            `;
-        });
-    }
-}
-
-// Initialize Menu and Orders
-const menu = new Menu();
-const unpaidOrders = [];
-
-// Add initial menu items
-menu.addItem('Phở', 35);
-menu.addItem('Cơm Tấm', 30);
-menu.addItem('Gà Rán', 35);
-menu.addItem('Bún', 35);
-menu.addItem('Bánh Mì', 35);
-
-document.addEventListener('DOMContentLoaded', () => {
-    menu.updateMenuList();
-    menu.populateFoodOptions();
+// Add event listener to the "Add Menu Item" button
+document.getElementById('add-menu-item').addEventListener('click', function() {
+    orderManager.addMenuItem();
 });
-
-// Event handlers
-function selectOption(option) {
-    window.selectedTableOrType = option;
-    alert('Bạn đã chọn: ' + option);
-}
-
-function addToOrder() {
-    const foodSelect = document.querySelector('.food');
-    const quantityInput = document.getElementById('quantity');
-    const selectedFood = foodSelect.value;
-    const quantity = parseInt(quantityInput.value, 10);
-
-    if (selectedFood && quantity > 0) {
-        const menuItem = menu.items.find(item => item.name === selectedFood);
-        if (menuItem) {
-            const order = unpaidOrders.find(o => o.tableOrType === window.selectedTableOrType);
-            if (order) {
-                order.addItem(menuItem, quantity);
-            } else {
-                const newOrder = new Order(window.selectedTableOrType);
-                newOrder.addItem(menuItem, quantity);
-                unpaidOrders.push(newOrder);
-            }
-            updateUnpaidOrdersTable();
-        }
-    }
-
-    foodSelect.value = '';
-    quantityInput.value = '';
-}
-
-function updateUnpaidOrdersTable() {
-    const unpaidOrdersTable = document.querySelector('.unpaid-orders tbody');
-    unpaidOrdersTable.innerHTML = '';
-
-    unpaidOrders.forEach(order => {
-        order.renderOrderTable(false);
-    });
-
-    document.querySelectorAll('.pay-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            const row = button.parentNode.parentNode;
-            const tableOrType = row.cells[0].innerHTML;
-            const order = unpaidOrders.find(o => o.tableOrType === tableOrType);
-
-            if (order) {
-                const index = unpaidOrders.indexOf(order);
-                unpaidOrders.splice(index, 1);
-
-                order.renderOrderTable(true);
-
-                const paidOrdersTable = document.querySelector('.paid-orders tbody');
-                paidOrdersTable.appendChild(row);
-            }
-        });
-    });
-}
-
-function addMenuItem() {
-    const name = prompt('Nhập tên món ăn:');
-    const price = prompt('Nhập giá món ăn:');
-    if (name && price && !isNaN(price)) {
-        menu.addItem(name, price);
-    }
-}
-
-function editMenuItem(name) {
-    const newName = prompt('Nhập tên món ăn mới:', name);
-    const newPrice = prompt('Nhập giá món ăn mới:');
-    if (newName && newPrice && !isNaN(newPrice)) {
-        menu.updateItem(name, newName, newPrice);
-    }
-}
-
-function deleteMenuItem(name) {
-    if (confirm('Bạn có chắc chắn muốn xóa món ăn này?')) {
-        menu.deleteItem(name);
-    }
-}
