@@ -15,6 +15,7 @@ class OrderManager {
             new MenuItem('Bún', 35),
             new MenuItem('Bánh Mì', 35)
         ];
+        //Update list food after loaded page
         document.addEventListener('DOMContentLoaded', this.init.bind(this));
     }
 
@@ -25,14 +26,13 @@ class OrderManager {
 
     selectOption(option) {
         this.selectedTableOrType = option;
-        alert('Bạn đã chọn: ' + option);
     }
 
     updateFoodSelection() {
-        const foodSelect = document.getElementById('food');
-        const quantityInput = document.getElementById('quantity');
-        const selectedFood = foodSelect.value;
-        const quantity = parseInt(quantityInput.value, 10);
+        let foodSelect = document.getElementById('food');
+        let quantityInput = document.getElementById('quantity');
+        let selectedFood = foodSelect.value;
+        let quantity = parseInt(quantityInput.value, 10);
 
         if (selectedFood && quantity > 0) {
             this.selectFood(selectedFood, quantity);
@@ -46,21 +46,21 @@ class OrderManager {
         }
 
         if (!food) return;
+        //access and get first element
+        let unpaidOrdersTable = document.getElementById('unpaid-orders').getElementsByTagName('tbody')[0];
 
-        const unpaidOrdersTable = document.getElementById('unpaid-orders').getElementsByTagName('tbody')[0];
-        const existingRow = Array.from(unpaidOrdersTable.rows).find(function(row) {
+        let existingRow = Array.from(unpaidOrdersTable.rows).find(function(row) {
             return row.cells[0].innerHTML === this.selectedTableOrType && row.cells[1].innerHTML.includes(food);
         }.bind(this));
 
+        //check existing and add new row
         if (existingRow) {
-            // Update quantity in existing row
             const quantityCell = existingRow.cells[2];
             const currentQuantity = parseInt(quantityCell.innerHTML, 10);
             quantityCell.innerHTML = currentQuantity + quantity;
             const foodCell = existingRow.cells[1];
             foodCell.innerHTML = `${food} (${currentQuantity + quantity})`;
         } else {
-            // Create new row for new table/type
             const newRow = unpaidOrdersTable.insertRow();
             const cell1 = newRow.insertCell(0);
             const cell2 = newRow.insertCell(1);
@@ -73,33 +73,40 @@ class OrderManager {
             cell4.innerHTML = '<button onclick="orderManager.markAsPaid(this)">Thanh Toán</button>';
         }
 
-        // Clear selection and quantity
+        // set to the next typing
         document.getElementById('food').value = '';
         document.getElementById('quantity').value = '';
     }
 
     markAsPaid(button) {
-        const row = button.parentNode.parentNode;
-        const unpaidOrdersTable = document.getElementById('unpaid-orders').getElementsByTagName('tbody')[0];
-        const paidOrdersTable = document.getElementById('paid-orders').getElementsByTagName('tbody')[0];
+
+        //select all row unpaid order
+        let row = button.parentNode.parentNode;
+        //access first element
+        let unpaidOrdersTable = document.getElementById('unpaid-orders').getElementsByTagName('tbody')[0];
+        let paidOrdersTable = document.getElementById('paid-orders').getElementsByTagName('tbody')[0];
 
         // Extract data from the row
-        const tableOrType = row.cells[0].innerHTML;
-        const food = row.cells[1].innerHTML.split(' (')[0];
-        const quantity = parseInt(row.cells[2].innerHTML, 10);
-        const price = this.menuList.find(function(item) {
+        let tableOrType = row.cells[0].innerHTML;
+        let food = row.cells[1].innerHTML.split(' (')[0];
+        let quantity = parseInt(row.cells[2].innerHTML, 10);
+
+        // Find the price of the food item
+        let priceItem = this.menuList.find(function(item) {
             return item.name === food;
-        }).price;
-        const totalPrice = price * quantity;
+        });
+        let price = priceItem ? priceItem.price : 0;
+
+        let totalPrice = price * quantity;
 
         // Create new row for the paid orders table
-        const newRow = paidOrdersTable.insertRow();
+        let newRow = paidOrdersTable.insertRow();
         newRow.innerHTML = `
-            <td>${tableOrType}</td>
-            <td>${food}</td>
-            <td>${quantity}</td>
-            <td>${totalPrice}</td>
-        `;
+        <td>${tableOrType}</td>
+        <td>${food}</td>      
+        <td>${quantity}</td>
+        <td>${totalPrice}</td>
+    `;
 
         // Remove the row from the unpaid orders table
         row.parentNode.removeChild(row);
@@ -119,6 +126,7 @@ class OrderManager {
         const row = button.parentNode.parentNode;
         const nameCell = row.cells[0];
         const priceCell = row.cells[1];
+        const oldName = nameCell.innerHTML;
 
         const newName = prompt('Nhập tên món ăn mới:', nameCell.innerHTML);
         const newPrice = prompt('Nhập giá món ăn mới:', priceCell.innerHTML);
@@ -126,6 +134,15 @@ class OrderManager {
         if (newName && newPrice && !isNaN(newPrice)) {
             nameCell.innerHTML = newName;
             priceCell.innerHTML = parseFloat(newPrice);
+
+            // Update menuList to reflect changes
+            this.menuList = this.menuList.map(function(item) {
+                if (item.name === oldName) {
+                    item.name = newName;
+                    item.price = parseFloat(newPrice);
+                }
+                return item;
+            });
             this.updateMenuList();
             this.populateFoodOptions();
         }
@@ -145,11 +162,11 @@ class OrderManager {
     }
 
     updateMenuList() {
-        const menuListTable = document.getElementById('menu-list').getElementsByTagName('tbody')[0];
+        let menuListTable = document.getElementById('menu-list').getElementsByTagName('tbody')[0];
         menuListTable.innerHTML = '';
 
         this.menuList.forEach(function(item) {
-            const newRow = menuListTable.insertRow();
+            let newRow = menuListTable.insertRow();
             newRow.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.price}</td>
