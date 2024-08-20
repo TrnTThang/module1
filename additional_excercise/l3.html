@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let n =+(prompt("enter the element number:"));
+    for (let i = 0; i < n; i++) {
+        let ele = parseInt(prompt(`Enter the element number ${i}`));
+     //if(!Number.isInteger(ele)){
+        if(Number.isNaN(ele)){
+            alert("the type number entered not correct");
+            i--;
+        }else{
+            array.push(ele);
+        }
+    }
+    let check = true;
+    for (let i = 1; i < array.length; i++) {
+        if (array[i]<array[i-1]){
+            check= false;
+            break;
+        }
+    }
+    if(check) {
+        alert("Ok");
+    } else {
+        alert("No");
+    }
+</script>
+</body>
+</html>

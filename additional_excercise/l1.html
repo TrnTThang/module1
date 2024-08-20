@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>phan tu chan va le</title>
+</head>
+<body>
+    <script>
+        function nhapMang() {
+            let arr = [];
+            let numberOfElements;
+
+            numberOfElements = parseInt(prompt("Nhập số lượng phần tử của mảng:"));
+
+            while (!Number.isInteger(numberOfElements) || numberOfElements <= 0) {
+                alert("Số lượng phần tử không hợp lệ. Vui lòng nhập lại.");
+                numberOfElements = parseInt(prompt("Nhập số lượng phần tử của mảng:"));
+            }
+
+            for (let i = 0; i < numberOfElements; i++) {
+                let element = parseFloat(prompt("Nhập giá trị phần tử thứ " + (i + 1) + ":"));
+
+                while (isNaN(element)) {
+                    alert("Giá trị phần tử không hợp lệ. Vui lòng nhập lại.");
+                    element = parseFloat(prompt("Nhập giá trị phần tử thứ " + (i + 1) + ":"));
+                }
+
+                arr.push(element);
+            }
+
+        }
+        function nhapmang2() {
+            let arr = [];
+            let input;
+            while (true){
+                input = prompt("nhap gia tri hoac cancel de dung");
+                if (input === null)
+                    break;
+                let element = parseInt(input);
+                arr.push(element);
+            }
+            return arr;
+        }
+        function check(arr){
+            let countEven = 0;
+            let countOdd = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0 ){
+                    countEven++;
+                } else {
+                    countOdd++;
+                }
+            }
+            if (countEven === countOdd) {
+                alert("OK");
+            } else {
+                alert("NO");
+            }
+        }
+        check(nhapmang2());
+    </script>
+</body>
+</html>

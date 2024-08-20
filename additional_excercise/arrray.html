@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>additional array</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let n =parseInt(prompt("enter the element number:"));
+   for (let i = 0; i < n; i++) {
+      let ele = parseInt(prompt(`Enter the element number ${i}`));
+      if(!Number.isInteger(ele)){
+          alert("the type number entered not correct");
+          i--;
+      }else{
+          array.push(ele);
+      }
+   }
+   document.write(`${array}`);
+   let temp = array[1]-array[0];
+   let increasingByStep =true;
+    for (let i = 1; i < array.length-1; i++) {
+        if (!(array[i+1]-array[i]===temp)){
+           increasingByStep=false;
+           break;
+        }
+    }
+    if (increasingByStep){
+        alert("OK");
+    } else {
+        alert("NO");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function checkArray (arr){
+            if (arr.length < 2 || arr.length % 2 ===1){
+                return false;
+            } else {
+                let midPosition = arr.length/2;
+                for (let i = 0; i < midPosition; i++) {
+                    if(arr[i]**2 !== arr[i+midPosition]){
+                        return false;
+                    }
+
+                }
+                return true;
+            }
+        }
+        let testArr = [1,2,5,1,4,25];
+        console.log(checkArray(testArr));
+    </script>
+
+</body>
+</html>

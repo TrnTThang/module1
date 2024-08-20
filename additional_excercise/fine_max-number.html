@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tim so lon nhat sau khi xoa mot phan tu trong so</title>
+</head>
+<body>
+<script>
+    function findMaxNumber(n) {
+        // Kiểm tra nếu n không phải là số có 4 chữ số
+        if (typeof n !== 'number' || n < 1000 || n > 9999) {
+            return -1;
+        }
+
+        let maxNumber = 0;
+        let nStr = n.toString();
+
+        // Thử xóa từng chữ số một và tìm số lớn nhất
+        for (let i = 0; i < nStr.length; i++) {
+            let tempNumber = parseInt(nStr.slice(0, i) + nStr.slice(i + 1));
+            if (tempNumber > maxNumber) {
+                maxNumber = tempNumber;
+            }
+        }
+
+        return maxNumber;
+    }
+
+    // Ví dụ sử dụng
+    console.log(findMaxNumber(1234)); // Kết quả: 234
+    console.log(findMaxNumber(9876)); // Kết quả: 987
+    console.log(findMaxNumber(1000)); // Kết quả: 100
+    console.log(findMaxNumber(999));  // Kết quả: -1 (Không phải số có 4 chữ số)
+
+    document.write(`${findMaxNumber(4655)}`);
+</script>
+
+</body>
+</html>

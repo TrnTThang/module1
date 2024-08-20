@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kiểm tra có phải tam giác vung khng</title>
+</head>
+<body>
+<script>
+    function checkTriangle(x, y, z) {
+        if (x < 0 || y < 0 || z < 0) {
+            document.write("không phải cạnh tam giác");
+        } else if (x + y > z && x + z > y && y + z > x) {
+            if ((x * x + y * y === z * z || x * x + z * z === y * y || y * y + z * z === x * x)) {
+                document.write("day la tam giac vuong0");
+
+            } else {
+                document.write("day la 3 canh cua tam giac");
+            }
+
+        }
+    }
+
+    let x = parseFloat(prompt("nhap canh dau tien cua tam giac"));
+    let y = parseFloat(prompt("nhap canh thu hai cua tam giac"));
+    let z = parseFloat(prompt("nhap canh thu ba cua tam giac"));
+    checkTriangle (x,y,z);
+
+</script>
+</body>
+</html>
