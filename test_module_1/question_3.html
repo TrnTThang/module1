@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 3</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let n = +(prompt("Enter number elements of array have under 51 elements"));
+    let k = +(prompt("Enter positive integer K"));
+
+    if (n > 50 || n < 1 || !Number.isInteger(k) || k <1) {
+        alert("Input number is wrong, enter again!");
+    } else {
+        for (let i = 0; i < n; i++) {
+            let element = parseInt(prompt(`Enter element number ${i + 1}`));
+            if (Number.isNaN(element)) {
+                alert("The type number entered is not correct");
+                i--;
+            } else {
+                array.push(element);
+            }
+        }
+    }
+
+    let arrayResult = [];
+    for (let i = 0; i <n-1 ; i++) {
+        for (let j = i+1; j < n; j++) {
+            if ((array[i]+array[j]%k===0)){
+                arrayResult.push("(" + array[i] + ", " + array[j] + ")");           }
+        }
+    }
+    console.log(array);
+    console.log(arrayResult.join(", "));
+    document.write("Pairs with sum divisible by " + k + " is: " + arrayResult.join(", "));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 1</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let n = +(prompt("Enter number elements of array have under 20 elements"));
+    if (n > 20 || n < 1) {
+        alert("Input number is wrong, enter again!");
+    } else {
+        for (let i = 0; i < n; i++) {
+            let element = parseInt(prompt(`Enter element number ${i + 1}`));
+            if (Number.isNaN(element)) {
+                alert("The type number entered is not correct");
+                i--;
+            } else {
+                array.push(element);
+            }
+        }
+
+
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 3 === 0 && array[i] % 5 === 0) {
+                sum += array[i];
+            }
+        }
+        document.write("Array is : " + array);
+        document.write(" <br> The sum of multiples of array is : " + sum);
+    }
+
+
+</script>
+</body>
+</html>

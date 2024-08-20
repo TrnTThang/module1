@@ -6,7 +6,98 @@
 </head>
 <body>
  <script>
-     function
+     // Định nghĩa lớp Computer
+     class Computer {
+         // Constructor để khởi tạo các thuộc tính của đối tượng
+         constructor(code, name, brand, price) {
+             this._code = code;
+             this._name = name;
+             this._brand = brand;
+             this._price = price;
+         }
+
+         // Getter cho thuộc tính code
+         get code() {
+             return this._code;
+         }
+
+         // Setter cho thuộc tính code
+         set code(value) {
+             this._code = value;
+         }
+
+         // Getter cho thuộc tính name
+         get name() {
+             return this._name;
+         }
+
+         // Setter cho thuộc tính name
+         set name(value) {
+             this._name = value;
+         }
+
+         // Getter cho thuộc tính brand
+         get brand() {
+             return this._brand;
+         }
+
+         // Setter cho thuộc tính brand
+         set brand(value) {
+             this._brand = value;
+         }
+
+         // Getter cho thuộc tính price
+         get price() {
+             return this._price;
+         }
+
+         // Setter cho thuộc tính price
+         set price(value) {
+             this._price = value;
+         }
+
+         // Phương thức toString để lấy thông tin của đối tượng
+         toString() {
+             return `Mã máy: ${this._code}, Tên máy: ${this._name}, Tên Hãng sản xuất: ${this._brand}, Giá bán: ${this._price}`;
+         }
+     }
+
+     // Quản lý danh sách máy tính
+     class ComputerManager {
+         constructor() {
+             this.computers = [];
+         }
+
+         // Thêm mới máy tính vào danh sách
+         addComputer(computer) {
+             this.computers.push(computer);
+         }
+
+         // Hiển thị danh sách máy tính
+         displayComputers() {
+             if (this.computers.length === 0) {
+                 console.log("Danh sách máy tính rỗng.");
+                 return;
+             }
+             this.computers.forEach(computer => {
+                 console.log(computer.toString());
+             });
+         }
+     }
+
+     // Ví dụ sử dụng
+     const manager = new ComputerManager();
+
+     // Thêm mới máy tính
+     const comp1 = new Computer("001", "Laptop X", "Brand A", 1200);
+     const comp2 = new Computer("002", "Desktop Y", "Brand B", 800);
+
+     manager.addComputer(comp1);
+     manager.addComputer(comp2);
+
+     // Hiển thị danh sách máy tính
+     manager.displayComputers();
+
  </script>
 </body>
 </html>

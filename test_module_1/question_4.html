@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 4</title>
+</head>
+<body>
+<h1>List Customer</h1>
+<div id="CustomerCList"></div>
+<script>
+    class Customer {
+        constructor(name, email, phoneNumber) {
+            this.name = name;
+            this.email = email;
+            this.phoneNumber = phoneNumber;
+        }
+
+        DisplayInfo() {
+            return `<div ><h2>${this.name}</h2>Email: ${this.email}<br>Phone Number: ${this.phoneNumber}</br></div>`;
+        }
+    }
+
+    let customer1 = new Customer('Van A', 'Vana@example.com', '0123456789');
+    let customer2 = new Customer('Trần Van B', 'tranB@example.com', '0984454321');
+
+    let CustomerCList = document.getElementById('CustomerCList');
+    CustomerCList.innerHTML += customer1.DisplayInfo();
+    CustomerCList.innerHTML += customer2.DisplayInfo();
+</script>
+</body>
+</html>

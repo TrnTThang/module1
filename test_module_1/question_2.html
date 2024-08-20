@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 2</title>
+</head>
+<body>
+<script>
+    function checkScore(score) {
+        let nextMultipleOf5;
+        let result;
+        if (score < 48) {
+            result = "Dont pass : " + score;
+        } else {
+            let remainderNumber = score % 5;
+            if (remainderNumber === 0) {
+                nextMultipleOf5 = score;
+            } else {
+                nextMultipleOf5 = score + (5 - remainderNumber);
+            }
+            let distance = nextMultipleOf5 - score;
+            if (distance < 3) {
+                result = "Pass : " + nextMultipleOf5;
+            } else {
+                result = "Pass : " + score;
+            }
+        }
+        return result;
+    }
+
+    document.write(checkScore(44) + "<br>");
+    document.write(checkScore(72) + "<br>");
+    document.write(checkScore(78) + "<br>");
+</script>
+</body>
+</html>

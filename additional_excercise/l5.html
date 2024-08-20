@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Computer {
+        constructor(code, name, brand, price) {
+            this._code = code;
+            this._name = name;
+            this._brand = brand;
+            this._price = price;
+        }
+
+        get code() {
+            return this._code;
+        }
+
+        set code(value) {
+            this._code = value;
+        }
+
+        get name() {
+            return this._name;
+        }
+
+        set name(value) {
+            this._name = value;
+        }
+
+        get brand() {
+            return this._brand;
+        }
+
+        set brand(value) {
+            this._brand = value;
+        }
+
+        get price() {
+            return this._price;
+        }
+
+        set price(value) {
+            this._price = value;
+        }
+
+        get info() {
+            return `Mã máy: ${this._code}, Tên máy: ${this._name}, Tên Hãng sản xuất: ${this._brand}, Giá bán: ${this._price}`;
+        }
+    }
+
+    // Sử dụng thuộc tính info
+    const computer = new Computer("001", "Laptop X", "Brand A", 1200);
+    console.log(computer.info);
+
+</script>
+</body>
+</html>
